@@ -43,8 +43,8 @@ class ForecastSolarDataUpdateCoordinator(DataUpdateCoordinator[Estimate]):
         self.forecast = ForecastSolar(
             api_key=api_key,
             session=async_get_clientsession(hass),
-            latitude=entry.data[CONF_LATITUDE],
-            longitude=entry.data[CONF_LONGITUDE],
+            latitude=hass.config.latitude,
+            longitude=hass.config.longitude,
             declination=entry.options[CONF_DECLINATION],
             azimuth=(entry.options[CONF_AZIMUTH] - 180),
             kwp=(entry.options[CONF_MODULES_POWER] / 1000),
